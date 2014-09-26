@@ -114,7 +114,7 @@ export default Ember.Mixin.create({
   */
   init: function() {
     this._super();
-    this._cachedHeights = [0];
+    this._cachedHeights = [0]; // change
     this.on('didInsertElement', this._syncListContainerWidth);
     this.columnCountDidChange();
     this._syncChildViews();
@@ -298,6 +298,7 @@ export default Ember.Mixin.create({
   }),
 
   _doRowHeightDidChange: function() {
+    // flush bin
     this._cachedHeights = [0];
     this._cachedPos = 0;
     this._syncChildViews();
@@ -374,6 +375,7 @@ export default Ember.Mixin.create({
     @method positionForIndex
   */
   positionForIndex: function(index) {
+    // maybe not the best check?
     if (typeof this.heightForIndex !== 'function') {
       return this._singleHeightPosForIndex(index);
     }
@@ -402,7 +404,7 @@ export default Ember.Mixin.create({
   // 0 maps to 0, 1 maps to heightForIndex(i)
   _multiHeightPosForIndex: function(index) {
     var elementWidth, width, columnCount, rowHeight, y, x;
-
+    // ask the bin
     elementWidth = get(this, 'elementWidth') || 1;
     width = get(this, 'width') || 1;
     columnCount = get(this, 'columnCount');
@@ -417,6 +419,7 @@ export default Ember.Mixin.create({
   },
 
   _cachedHeightLookup: function(index) {
+    // wont be needed
     for (var i = this._cachedPos; i < index; i++) {
       this._cachedHeights[i + 1] = this._cachedHeights[i] + this.heightForIndex(i);
     }
@@ -451,6 +454,7 @@ export default Ember.Mixin.create({
     @property {Ember.ComputedProperty} columnCount
   */
   columnCount: Ember.computed('width', 'elementWidth', function() {
+    // i don't think this really makes sense.
     var elementWidth, width, count;
 
     elementWidth = get(this, 'elementWidth');
@@ -786,6 +790,7 @@ export default Ember.Mixin.create({
     containerWidth = elementWidth * columnCount;
     element = this.$('.ember-list-container');
 
+    // needs to change, actually should be the known  upfront
     if (containerWidth && element) {
       element.css('width', containerWidth);
     }
