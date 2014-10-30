@@ -77,7 +77,7 @@ test("Correct height based on content", function(assert) {
   assert.equal(view.get('totalHeight'), 3350);
 
   var positionSorted = sortElementsByPosition(this.$('.ember-list-item-view'));
-  assert.equal(this.$('.ember-list-item-view').length, 4);
+  assert.equal(this.$('.ember-list-item-view').length, 4 /** 5 in pack */);
 
   var i, contentIdx;
 
@@ -90,7 +90,10 @@ test("Correct height based on content", function(assert) {
     { x:0, y:    0 }, // <-- in view
     { x:0, y:  100 }, // <-- in view
     { x:0, y:  200 }, // <-- in view
-    { x:0, y:  350 }  // <-- buffer
+    { x:0, y:  350 },  // <-- buffer
+    /* in pack branch
+    { x: 0, y:  400 }, // <-- buffer
+    */
   ], 'went beyond scroll max via overscroll');
 
   Ember.run(view, 'scrollTo', 1000);
@@ -105,7 +108,10 @@ test("Correct height based on content", function(assert) {
     { x:0, y: 950 }, // <-- partially in view
     { x:0, y: 1100 }, // <-- in view
     { x:0, y: 1150 }, // <-- in view
-    { x:0, y: 1250 }  // <-- partially in view
+    { x:0, y: 1250 }, // <-- partially in view
+    /* in pack
+    { x:0, y: 1400 }  // <-- partially in view
+    */
   ], 'went beyond scroll max via overscroll');
 });
 
@@ -180,7 +186,7 @@ test("Correct height based on view", function(assert) {
   assert.equal(view.get('totalHeight'), 3350);
 
   var positionSorted = sortElementsByPosition(this.$('.ember-list-item-view'));
-  assert.equal(this.$('.ember-list-item-view').length, 4);
+  assert.equal(this.$('.ember-list-item-view').length, 4 /* 5 in pack */);
 
   var i, contentIdx;
 
@@ -193,7 +199,10 @@ test("Correct height based on view", function(assert) {
     { x:0, y:    0 }, // <-- in view
     { x:0, y:  100 }, // <-- in view
     { x:0, y:  200 }, // <-- in view
-    { x:0, y:  350 }  // <-- buffer
+    { x:0, y:  350 }, // <-- buffer
+    /* in pack
+    { x:0, y:  400 }  // <-- buffer
+    */
   ], 'went beyond scroll max via overscroll');
 
   Ember.run(view, 'scrollTo', 1000);
@@ -208,7 +217,10 @@ test("Correct height based on view", function(assert) {
     { x:0, y:  950 }, // <-- partially in view
     { x:0, y: 1100 }, // <-- in view
     { x:0, y: 1150 }, // <-- in view
-    { x:0, y: 1250 }  // <-- partially in view
+    { x:0, y: 1250 }, // <-- partially in view
+    /* in pack
+    { x:0, y: 1400 }  // <-- partially in view
+    */
   ], 'went beyond scroll max via overscroll');
 });
 
