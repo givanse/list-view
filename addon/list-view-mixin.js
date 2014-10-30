@@ -115,7 +115,7 @@ export default Ember.Mixin.create({
   domManager: domManager,
 >>>>>>> restore isGrid class as it is entirely variable to content, add a shelf class so it is known when we are in shelf mode...:packages/list-view/lib/list_view_mixin.js
   scrollTop: 0,
-  bottomPadding: 0, // TODO: maybe this can go away
+  bottomPadding: 0,
   _lastEndingIndex: 0,
 
   isShelf: false,
