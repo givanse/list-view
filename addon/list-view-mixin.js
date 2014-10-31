@@ -120,16 +120,11 @@ export default Ember.Mixin.create({
   emptyViewClass: Ember.View,
   classNames: ['ember-list-view'],
   attributeBindings: ['style'],
-<<<<<<< HEAD:addon/list-view-mixin.js
-  classNameBindings: ['_isGrid:ember-list-view-grid:ember-list-view-list'],
-=======
   classNameBindings: [
     '_isGrid:ember-list-view-grid:ember-list-view-list',
     '_isShelf:ember-list-view-shelf',
     '_isFixed:ember-list-view-fixed'
   ],
-  domManager: domManager,
->>>>>>> restore isGrid class as it is entirely variable to content, add a shelf class so it is known when we are in shelf mode...:packages/list-view/lib/list_view_mixin.js
   scrollTop: 0,
   bottomPadding: 0,
   _lastEndingIndex: 0,
@@ -633,12 +628,8 @@ export default Ember.Mixin.create({
   heightForIndex: null,
 
   /**
-    @private
-
-    Intelligently manages the number of childviews.
-
-    @method _syncChildViews
-   **/
+   @private
+   */
   _syncScrollTop: function() {
     var newNumber = this._numChildViewsForViewport();
     var oldNumber = this._oldNumberOfViewsNeededForViewport;
@@ -663,7 +654,14 @@ export default Ember.Mixin.create({
 
   },
 
-  _syncChildViews: function () {
+  /**
+   @private
+
+   Intelligently manages the number of childviews.
+
+   @method _syncChildViews
+   **/
+  _syncChildViews: function(){
     var childViews, childViewCount,
         numberOfChildViews, numberOfChildViewsNeeded,
         contentIndex, startingIndex, endingIndex,
