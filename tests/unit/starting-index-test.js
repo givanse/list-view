@@ -8,7 +8,7 @@ import ListItemView from 'list-view/list-item-view';
 import ListView from 'list-view/list-view';
 import ReusableListItemView from 'list-view/reusable-list-item-view';
 
-moduleForView('list-view', 'startingIndex', {});
+moduleForView('list-view', 'unit/starting-index-test.js - startingIndex', {});
 
 test("base case", function(assert){
   var height = 500, rowHeight = 50, width = 100, elementWidth = 50;
@@ -81,7 +81,7 @@ test("larger list", function(assert){
     });
   });
 
-  assert.equal(view._startingIndex(), 28);
+  assert.equal(view._startingIndex(), 30);
 });
 
 test("larger list", function(assert){
